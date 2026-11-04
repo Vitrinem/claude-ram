@@ -18,16 +18,16 @@ Kør kun guarden i én session ad gangen.
 Ved prompten i en Claude Code-terminal:
 
 ```
-/plugin install ram-inspector --marketplace vitrinem/claude-ram-inspector
+/plugin install ram-inspector --marketplace Vitrinem/claude_ram_inspector
 ```
 
 Fra en shell:
 
 ```bash
-claude plugin install ram-inspector --marketplace vitrinem/claude-ram-inspector
+claude plugin install ram-inspector --marketplace Vitrinem/claude_ram_inspector
 ```
 
-I desktop-appen, hvor `/plugin` ikke virker: klik på + ved siden af promptfeltet, vælg Plugins, så Add marketplace med `vitrinem/claude-ram-inspector`, og derefter Add plugin.
+I desktop-appen, hvor `/plugin` ikke virker: klik på + ved siden af promptfeltet, vælg Plugins, så Add marketplace med `Vitrinem/claude_ram_inspector`, og derefter Add plugin.
 
 Repository'et er privat. Installationen virker derfor kun for folk med læseadgang på GitHub, hvis computer allerede har GitHub-login sat op (en SSH-nøgle, eller `gh auth login` og derefter `gh auth setup-git`).
 

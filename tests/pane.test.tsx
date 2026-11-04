@@ -21,6 +21,7 @@ const PS = [
   '  300     1  500000  2.0 S  1-02:00:00 claude',
   '  301   300    1000  0.0 S       00:01 sh -c echo',
   '  400     1    1000  0.0 S       00:10 /usr/bin/vim notes.txt',
+  '  500     1    2200  0.0 S       00:10 /bin/sh -c test -d ~/.claude-code && echo ok',
 ].join('\n')
 
 const VM = [
@@ -65,6 +66,7 @@ test('the pane groups Claude processes into sessions and marks this one', async 
     expect(await ui.find({ type: 'Text', text: /Claude desktop-app/ })).toBeDefined()
     expect(await ui.find({ type: 'Text', text: /denne session/ })).toBeDefined()
     expect(await ui.find({ type: 'Text', text: /vim/ })).toBeUndefined()
+    expect(await ui.find({ type: 'Text', text: /Session 500/ })).toBeUndefined()
     // session 200 holds itself and its build child: 900000 + 2000000 KB
     expect(await ui.find({ type: 'Text', text: /^2\.8 GB$/ })).toBeDefined()
     // this session has no pause button; the other one does

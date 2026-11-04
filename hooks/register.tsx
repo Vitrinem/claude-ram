@@ -158,10 +158,15 @@ async function scanWin($: $T): Promise<{ procs: Raw[]; total: number; used: numb
 
 // ------------------------------------------------------------------ grouping
 
+const NOT_CLAUDE =
+  /^(sh|bash|zsh|dash|ksh|fish|env|timeout|flock|nice|sudo|python[\d.]*|perl|ruby|cat|grep|rg|find|ps|cmd\.exe|powershell(\.exe)?|pwsh(\.exe)?)$/
+
 function classify(p: Raw): 'cli' | 'desktop' | null {
   const l = p.cmd.toLowerCase().replace(/\\/g, '/')
   const name = p.name.toLowerCase()
   const argv = l.split(/\s+/)
+  // A shell or a tool whose arguments merely mention Claude is not Claude.
+  if (NOT_CLAUDE.test(name)) return null
   const isCode =
     l.includes('claude-code') ||
     l.includes('@anthropic-ai/claude') ||
@@ -455,7 +460,7 @@ export const register: Register = on => {
     const snap = await read($, snapshot)
     if (!snap) return { text: 'Claude RAM-panelet er åbnet.' }
     const lines = snap.groups.map(
-      g => `${g.label}${g.isSelf ? ' (denne)' : ''}: ${fmt(g.rss)}, ${g.count} processer${g.paused ? ', på pause' : ''}`,
+      g => `${g.label}${g.isSelf ? ' (denne)' : ''}: ${fmt(g.rss)}, ${g.count} ${g.count === 1 ? 'proces' : 'processer'}${g.paused ? ', på pause' : ''}`,
     )
     return {
       text: [`RAM ${fmt(snap.memUsed)} af ${fmt(snap.memTotal)}, Claude bruger ${fmt(snap.claudeRss)}.`, ...lines].join('\n'),

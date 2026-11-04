@@ -1,5 +1,5 @@
 {
-  "name": "claude-ram-inspector",
+  "name": "claude-ram",
   "owner": { "name": "vitrinem" },
   "plugins": [{ "name": "ram-inspector", "source": "./" }]
 }

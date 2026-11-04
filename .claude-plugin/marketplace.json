@@ -1,5 +1,13 @@
 {
   "name": "claude-ram",
-  "owner": { "name": "vitrinem" },
-  "plugins": [{ "name": "ram-inspector", "source": "./" }]
+  "description": "VitrineMedias Claude Code-mods. Indeholder ram-inspector: et panel der viser RAM-forbrug pr. Claude Code-session, med pause, fortsæt, stop og en RAM-guard.",
+  "owner": {
+    "name": "vitrinem"
+  },
+  "plugins": [
+    {
+      "name": "ram-inspector",
+      "source": "./"
+    }
+  ]
 }

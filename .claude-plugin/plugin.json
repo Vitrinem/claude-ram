@@ -2,5 +2,9 @@
   "name": "ram-inspector",
   "version": "0.1.0",
   "description": "Panel der viser hvilke Claude Code-sessioner og -processer der bruger RAM, med pause, fortsæt, stop og en guard der pauser tunge sessioner ved høj RAM.",
-  "types": "./types/index.d.ts"
+  "types": "./types/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "VitrineMedia Danmark"
+  }
 }
